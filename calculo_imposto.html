@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de IPI e ICMS-ST</title>
+    <style>
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            border: solid black;
+            border-radius: 5px;
+            background-color: #c4bcbc;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .container {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            width: 530px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #c4bcbc;
+            padding: 0px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            color: black;
+            border: solid grey;
+            background-color: #c4bcbc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>AUTO PEÇAS BOM DESPACHO LTDA.</h2>
+        <h2>Av. Bandeirantes, 80 - Dom Joaquim - Bom Despacho - MG - 37-3521-4105</h2>
+        <!--<button class="no-print" onclick="printPage()">Imprimir</button>-->
+    </div>
+    <div class="container">
+        <h1>Cálculo de IPI e ICMS-ST</h1>
+        <div class="form-group">
+            <label for="produto">Valor do Produto (R$):</label>
+            <input type="number" id="produto" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="ipi">Alíquota de IPI (%):</label>
+            <input type="number" id="ipi" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="icms">Alíquota de ICMS-ST (%):</label>
+            <input type="number" id="icms" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="frete">Valor do Frete (R$):</label>
+            <input type="number" id="frete" step="0.01" required>
+        </div>
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="limpar()">Limpar</button>
+
+        <div id="resultado" class="result"></div>
+    </div>
+    <div class="fixed-footer">
+        <p class="corp">Página desenvolvida por Wesley Oliveira</p>
+    </div>
+    <script>
+        function calcular() {
+            // Obtém os valores dos inputs
+            const valorProduto = parseFloat(document.getElementById('produto').value);
+            const aliquotaIPI = parseFloat(document.getElementById('ipi').value);
+            const aliquotaICMS = parseFloat(document.getElementById('icms').value);
+            const valorFrete = parseFloat(document.getElementById('frete').value);
+
+            // Verifica se os valores são válidos
+            if (isNaN(valorProduto) || isNaN(aliquotaIPI) || isNaN(aliquotaICMS) || isNaN(valorFrete)) {
+                alert('Por favor, insira valores válidos.');
+                return;
+            }
+
+            // Calcula os valores do IPI e ICMS-ST
+            const valorIPI = (valorProduto * aliquotaIPI) / 100;
+            const valorICMS = (valorProduto * aliquotaICMS) / 100;
+
+            // Calcula o valor total
+            const valorTotal = valorProduto + valorIPI + valorICMS + valorFrete;
+
+            // Exibe o resultado
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <p>Valor do Produto: R$ ${valorProduto.toFixed(2)}</p>
+                <p>Valor do IPI: R$ ${valorIPI.toFixed(2)}</p>
+                <p>Valor do ICMS-ST: R$ ${valorICMS.toFixed(2)}</p>
+                <p>Valor do Frete: R$ ${valorFrete.toFixed(2)}</p>
+                <p><strong>Valor Total: R$ ${valorTotal.toFixed(2)}</strong></p>
+            `;
+        }
+        function limpar() {
+            // Reseta os valores dos inputs
+            document.getElementById('produto').value = '';
+            document.getElementById('ipi').value = '';
+            document.getElementById('icms').value = '';
+            document.getElementById('frete').value = '';
+            
+            // Limpa o resultado
+            document.getElementById('resultado').innerHTML = '';
+        }
+    </script>
+    
+</body>
+</html>

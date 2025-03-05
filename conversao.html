@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão de Materiais</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calcularPeso() {
+            // Obter a quantidade em metros do input
+            var metros = parseFloat(document.getElementById("metros").value);
+            // Obter o tipo de barra selecionado
+            var tipoBarra = document.getElementById("tipoBarra").value;
+            var pesoPorMetro = 0;
+
+            // Determinar o peso por metro baseado no tipo de barra
+            if (tipoBarra === "barra1") {
+                pesoPorMetro = 1.65;
+            } else if (tipoBarra === "barra2") {
+                pesoPorMetro = 1.19;
+            } else if (tipoBarra === "barra3") {
+                pesoPorMetro = 1.25;
+            } else if (tipoBarra === "tarugo1") {
+                pesoPorMetro = 9.10;
+            } else if (tipoBarra === "tarugo2") {
+                pesoPorMetro = 16;
+            }
+
+            // Calcular o peso total
+            var pesoTotal = metros * pesoPorMetro;
+
+            // Exibir o resultado
+            document.getElementById("resultado").innerText = "Peso Total: " + pesoTotal.toFixed(2) + " kg";
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>AUTO PEÇAS BOM DESPACHO LTDA.</h1>
+        <h2>Av. Bandeirantes, 80 - Dom Joaquim - Bom Despacho - MG</h2>
+        <h2>37-3521-4105</h2>
+        <!--<button class="no-print" onclick="printPage()">Imprimir</button>-->
+    </div>
+    <div class="calculo">
+    <h1>Conversão de materiais</h1>
+    <h2>barra chata, tarugo...</h2>
+    <label for="metros">Quantidade em metros:</label>
+    <input type="number" id="metros" step="0.01" min="0">
+    <br><br>
+    <label for="tipoBarra">Tipo de Barra:</label>
+    <select id="tipoBarra">
+        <option value="barra1">Barra Chata 1/4 x 1"</option>
+        <option value="barra2">Barra Chata 3/16 x 1.1/2"</option>
+        <option value="barra3">Barra Chata 3/16 x 1"</option>
+        <option value="tarugo1">Tarugo aço 1.1/2"</option>
+        <option value="tarugo2">Tarugo aço 2"</option>
+    </select>
+    <br><br>
+    <button onclick="calcularPeso()">Calcular Peso</button>
+    <br><br>
+    <div id="resultado"></div>
+    <button onclick="window.location.href='index.html'">Voltar</button>
+    </div>
+    <div class="fixed-footer">
+        <p class="corp">Página desenvolvida por Wesley Oliveira</p>
+    </div>
+</body>
+</html>

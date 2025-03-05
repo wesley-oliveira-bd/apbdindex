@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List com 6 Inputs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .todo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .todo-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .todo-item input {
+            width: 100px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .todo-item button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .todo-item button:hover {
+            background-color: #c9302c;
+        }
+        .add-todo-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .add-todo-btn:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Tarefas</h1>
+
+    <div class="todo-container">
+        <div id="todoList"></div>
+        <button class="add-todo-btn" onclick="addTodo()">Adicionar Tarefa</button>
+    </div>
+
+    <script>
+        function addTodo() {
+            // Cria um novo item de tarefa com 6 inputs
+            const todoList = document.getElementById('todoList');
+            const todoItem = document.createElement('div');
+            todoItem.className = 'todo-item';
+
+            for (let i = 0; i < 6; i++) {
+                let input = document.createElement('input');
+                input.type = 'text';
+                todoItem.appendChild(input);
+            }
+
+            // Botão de excluir tarefa
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Excluir';
+            deleteButton.onclick = function() {
+                todoList.removeChild(todoItem);
+            };
+            todoItem.appendChild(deleteButton);
+
+            todoList.appendChild(todoItem);
+        }
+    </script>
+
+</body>
+</html>
+
