@@ -1,64 +1,87 @@
+/* ==========================
+   CONFIGURAÇÃO GLOBAL
+========================== */
 body {
     font-family: Arial, sans-serif;
-    /*background: linear-gradient(112deg, rgba(0,36,12,1) 0%, rgba(14,240,14,1) 4%, rgba(241,245,246,1) 18%);*/
-    background-color: rgba(127, 255, 212, 0);
+    background-color: #f6f6f6;
+    margin: 0;
+    padding-bottom: 130px; /* espaço para o rodapé */
 }
 
+/* ==========================
+   TABELAS
+========================== */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid #000;
-    padding: 8px;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #ececec;
+    font-weight: bold;
 }
 
+/* ==========================
+   CABEÇALHO
+========================== */
 .header {
     text-align: center;
-    margin-bottom: 10px;
-    border: solid black;
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px #333;
     border-radius: 5px;
-    background-color: #c4bcbc;
+    background-color: #dcdcdc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* ==========================
+   RODAPÉ FIXO
+========================== */
 .fixed-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #c4bcbc;
-    padding: 0px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    background-color: #dcdcdc;
+    padding: 10px;
     text-align: center;
-    color: black;
-    border: solid grey;
-    background-color: #c4bcbc;
+    border-top: 1px solid grey;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    z-index: 999;
 }
 
 .corp {
-    font-size: smaller;
+    font-size: 12px;
     font-style: italic;
 }
 
+/* ==========================
+   SEÇÃO CLIENTE / FORMULÁRIOS
+========================== */
 .cliente {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Espaçamento entre os inputs */
+    gap: 10px;
     font-weight: bold;
-    border: solid black;
+    border: solid 1px #444;
     padding: 10px;
-    margin: 10px;
+    margin: 15px;
+    background: #fff;
+    border-radius: 5px;
 }
 
 .input-group {
-    flex: 1 1 calc(50% - 10px); /* 50% da largura menos o espaçamento */
+    flex: 1 1 calc(50% - 10px);
     box-sizing: border-box;
 }
 
@@ -66,58 +89,104 @@ th {
     width: 30%;
 }
 
-.hidden-print {
+/* ==========================
+   BOTÕES E INPUTS
+========================== */
+input,
+select,
+button {
+    padding: 6px 8px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+}
+
+button {
+    cursor: pointer;
+    background: #ececec;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #d6d6d6;
+}
+
+/* ==========================
+   CONTROLES DE IMPRESSÃO
+========================== */
+
+/* REMOVIDO: estava escondendo botões e inputs fora do modo print */
+/*
+.hidden-print,
+.no-print {
     display: none;
 }
+*/
 
 @media print {
-    .hidden-print {
-        display: none;
-    }
+
+    
+
     .no-print {
-        display: none;
+        display: none !important; /* agora some só na impressão */
     }
-}
 
-@media print {
     input {
-        border: none;
-        box-shadow: none;
+        border: none !important;
+        box-shadow: none !important;
         -webkit-appearance: none;
         appearance: none;
     }
 }
 
+/* ==========================
+   MENU DE ATALHOS
+========================== */
 .menu {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    color: black;
+    gap: 15px;
+    margin: 10px;
 }
 
 .item_menu {
     height: 150px;
     width: 150px;
     padding: 5px;
-    margin: 5px;
-    border: solid grey;
-    border-radius: 5px;
+    border: solid 1px grey;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.item_menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .item_menu p {
     font-weight: bold;
+    margin-top: 8px;
 }
 
+/* ==========================
+   LISTAS / OUTROS
+========================== */
 ul {
-    list-style-type: none; /* Remove os marcadores das listas */
-    padding: 0; /* Remove o padding padrão do <ul> */
+    list-style-type: none;
+    padding: 0;
 }
 
 .calculo {
-    border: solid gray;
+    border: solid 1px gray;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
+    background: white;
 }

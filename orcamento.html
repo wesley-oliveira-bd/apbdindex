@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>orçamento</title>
+    <title>Orçamento</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
+    <!-- CABEÇALHO -->
     <div class="header">
         <h2>Orçamento</h2>
         <h1>AUTO PEÇAS BOM DESPACHO LTDA.</h1>
-        <h2>Av. Bandeirantes, 80 - Dom Joaquim - Bom Despacho - MG</h2>
-        <h2>37-3521-4105</h2>
-        <!--<button class="no-print" onclick="printPage()">Imprimir</button>-->
+        <h3>Av. Bandeirantes, 80 - Dom Joaquim - Bom Despacho - MG</h3>
+        <h3>Telefone: (37) 3521-4105</h3>
     </div>
+
+    <!-- DADOS DO CLIENTE -->
     <div class="cliente">
+
         <div class="input-group">
-        <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" maxlength="50" placeholder="Máximo 50 caracteres">
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" maxlength="50" placeholder="Máximo 50 caracteres">
         </div>
 
         <div class="input-group">
-        <label for="fone">Fone:</label>
-        <input type="text" name="" id="fone" maxlength="13">
-        </div>
-        
-        <div class="input-group">
-        <label for="prazo">Forma pgto.:</label>
-        <input type="text" id="prazo" maxlength="25">
+            <label for="fone">Fone:</label>
+            <input type="text" id="fone" maxlength="13">
         </div>
 
         <div class="input-group">
-        <label for="entrega">Entrega:</label>
-        <input type="text" name="" id="entrega" maxlength="13" placeholder="Prazo de entrega dos itens">
+            <label for="prazo">Forma pgto.:</label>
+            <input type="text" id="prazo" maxlength="25">
         </div>
 
         <div class="input-group">
-        <label for="vendedor">Vendedor:</label>
-        <input type="text" name="" id="vendedor" maxlength="13" placeholder="vendedor responsável">
+            <label for="entrega">Entrega:</label>
+            <input type="text" id="entrega" maxlength="13" placeholder="Prazo de entrega dos itens">
         </div>
+
+        <div class="input-group">
+            <label for="vendedor">Vendedor:</label>
+            <input type="text" id="vendedor" maxlength="13" placeholder="Vendedor responsável">
+        </div>
+
+        <div class="input-group">
+            <label for="veiculo">Veículo:</label>
+            <input type="text" id="veiculo" maxlength="25" placeholder="placa/modelo/ano">
+        </div>
+
     </div>
-    
 
+    <!-- TABELA DE ITENS -->
     <table>
         <thead>
             <tr>
                 <th>Código</th>
                 <th>Descrição</th>
-                <th>Quantidade</th>
-                <th>Valor Unitário</th>
-                <th>Valor Total</th>
+                <th>Qtd.</th>
+                <th>Vlr. Unit.</th>
+                <th>Vlr. Total</th>
                 <th class="no-print">Ações</th>
             </tr>
         </thead>
+
         <tbody id="item-list">
             <tr>
                 <td><input type="text" id="codigo" class="no-print"></td>
@@ -66,15 +77,22 @@
         </tbody>
     </table>
 
+    <!-- RODAPÉ FIXO -->
     <div class="fixed-footer">
-        <strong>Total Geral: </strong><span id="total-geral">R$ 0,00</span>
+        <strong>Total Geral: </strong>
+        <span id="total-geral">R$ 0,00</span>
+
         <p>Orçamento válido por 5 dias a partir da emissão.</p>
         <p class="corp">Página desenvolvida por Wesley Oliveira</p>
     </div>
-    <button class="no-print" onclick="printPage()">Imprimir</button>
-    <button class="no-print" onclick="window.location.href='index.html'">Voltar</button>
+
+    <!-- BOTÕES -->
+    <div class="botoes no-print">
+        <button onclick="printPage()">Imprimir</button>
+        <button onclick="window.location.href='index.html'">Voltar</button>
+    </div>
+
     <script src="script.js"></script>
 
 </body>
 </html>
-

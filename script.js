@@ -45,6 +45,8 @@ function addItem() {
     } else {
         alert('Por favor, preencha todos os campos corretamente.');
     }
+    // 👉 volta o foco para o primeiro input
+    document.getElementById("codigo").focus();
 }
 
 function removeItem(button) {
